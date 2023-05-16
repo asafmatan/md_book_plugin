@@ -36,6 +36,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          clean: false
       - name: Install mdBook
         run: |
           curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
@@ -65,6 +67,7 @@ jobs:
 #        uses: actions/upload-pages-artifact@v1
 #        with:
 #          path: ./book
+
 
   # Deployment job
   deploy:
