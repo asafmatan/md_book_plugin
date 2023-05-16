@@ -39,8 +39,8 @@ jobs:
       - name: Check for changes in mdBook files
         id: check_changes
         run: |
-          echo "name=changed::$(if git diff --quiet HEAD^..HEAD -- ./src; then echo 'false'; else echo 'true'; fi)" >> $GITHUB_OUTPUT          
-#         echo "name=changed::$(git diff --quiet HEAD^ HEAD && echo 'false' || echo 'true')" >> $GITHUB_OUTPUT          
+          echo "name=changed::$(git diff --quiet HEAD^ HEAD && echo 'false' || echo 'true')" >> $GITHUB_OUTPUT          
+#         echo "name=changed::$(if git diff --quiet HEAD^..HEAD -- ./src; then echo 'false'; else echo 'true'; fi)" >> $GITHUB_OUTPUT          
 #         echo "::set-output name=changed::$(if git diff --quiet HEAD^..HEAD -- ./src; then echo 'false'; else echo 'true'; fi)"
       - name: Cancel workflow if no changes
         if: steps.check_changes.outputs.changed == 'false'
