@@ -40,6 +40,7 @@ jobs:
         id: check_changes
         run: |
           echo "name=changed::$(if git diff --quiet HEAD^..HEAD -- ./src; then echo 'false'; else echo 'true'; fi)" >> $GITHUB_OUTPUT          
+#         echo "name=changed::$(git diff --quiet HEAD^ HEAD && echo 'false' || echo 'true')" >> $GITHUB_OUTPUT          
 #         echo "::set-output name=changed::$(if git diff --quiet HEAD^..HEAD -- ./src; then echo 'false'; else echo 'true'; fi)"
       - name: Cancel workflow if no changes
         if: steps.check_changes.outputs.changed == 'false'
@@ -90,7 +91,7 @@ jobs:
       - name: Print Full URL
         run: |
           BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//-/g')
-          echo "Full URL: https://${{ github.repository_owner }}.github.io/${{ github.repository }}/$BRANCH_NAME/"        
+          echo "Full URL: https://${{ github.repository_owner }}.github.io/$BRANCH_NAME/"        
 #    steps:
 #      - name: Deploy to GitHub Pages
 #        id: deployment
