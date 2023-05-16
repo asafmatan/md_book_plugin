@@ -32,4 +32,3 @@
 
 ## Section 12
 
-## Section 6666
